@@ -715,7 +715,7 @@ static void hx1230WriteDataBlock(unsigned char *ucBuf, int iLen)
 #ifdef BACKING_RAM
   if (iScreenOffset < 0 || iScreenOffset+iLen > sizeof(ucScreen))
      return; // invalid
-   Keep a copy in local buffer
+//   Keep a copy in local buffer
   memcpy(&ucScreen[iScreenOffset], ucBuf, iLen);
   iScreenOffset += iLen;
 #endif
@@ -797,7 +797,7 @@ byte bFlipped = false;
 // A local copy of the frame buffer is needed since we can't
 // read data from the display
 //
-void hx1230SetPixel(int x, int y, unsigned char ucColor)
+int hx1230SetPixel(uint8_t x, uint8_t y, uint8_t ucColor)
 {
 int i;
 unsigned char uc, ucOld;
